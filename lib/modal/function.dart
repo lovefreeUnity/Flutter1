@@ -109,3 +109,30 @@ mixin ShowPopup {
     );
   }
 }
+
+class Toast {
+   static dynamic showToast(
+      {required BuildContext context,
+      String? text,
+      TextStyle? textStyle,
+      EdgeInsets? padding,
+      bool error = false,
+      Color? backgroundColor}) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(text ?? "Text",
+          textAlign: TextAlign.center,
+          style: error
+              ? TextStyle(
+                  color:
+                      Theme.of(context).snackBarTheme.disabledActionTextColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400)
+              : textStyle),
+      behavior: SnackBarBehavior.floating,
+      width: double.infinity,
+      padding: padding ?? const EdgeInsets.fromLTRB(16, 12, 16, 12),
+      backgroundColor: error ? const Color(0xFFFFF1F0) : backgroundColor,
+    ));
+  }
+}
