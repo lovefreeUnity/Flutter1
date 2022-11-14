@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:study/MORTcolor.dart';
 
 class FullButton extends StatefulWidget {
   const FullButton(
-      {Key? key,
+      {super.key,
       this.textStyle,
       this.onTap,
       this.backgroundColor,
@@ -25,24 +24,25 @@ class FullButton extends StatefulWidget {
 class _FullButtonState extends State<FullButton> {
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
-      onTap: () {
-        widget.onTap;
-      },
+      onTap: widget.onTap,
       child: Container(
         width: double.infinity,
         color: widget.inactive
             ? Theme.of(context).disabledColor
             : widget.backgroundColor ?? Theme.of(context).primaryColor,
-        child: Padding(
-          padding: widget.padding ??
-              const EdgeInsets.symmetric(vertical: 16.5, horizontal: 4),
-          child: Text(widget.text ?? "Button",
-              textAlign: TextAlign.center,
-              style: widget.inactive
-                  ?  TextStyle(fontSize: 18, color: Theme.of(context).backgroundColor ,fontWeight: FontWeight.w700)
-                  : widget.textStyle ??
-                       TextStyle(fontSize: 18, color:Theme.of(context).backgroundColor, fontWeight: FontWeight.w700)),
+        child: Center(
+          child: Padding(
+            padding: widget.padding ??
+                const EdgeInsets.symmetric(vertical: 16.5, horizontal: 4),
+            child: Text(widget.text ?? "Button",
+                textAlign: TextAlign.center,
+                style: widget.inactive
+                    ?  TextStyle(fontSize: 18, color: Theme.of(context).backgroundColor ,fontWeight: FontWeight.w700)
+                    : widget.textStyle ??
+                    TextStyle(fontSize: 18, color:Theme.of(context).backgroundColor, fontWeight: FontWeight.w700)),
+          ),
         ),
       ),
     );
