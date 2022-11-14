@@ -111,7 +111,7 @@ mixin ShowPopup {
 }
 
 class Toast {
-   static dynamic showToast(
+  static void showToast(
       {required BuildContext context,
       String? text,
       TextStyle? textStyle,
@@ -119,20 +119,23 @@ class Toast {
       bool error = false,
       Color? backgroundColor}) {
     ScaffoldMessenger.of(context).clearSnackBars();
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(text ?? "Text",
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(text ?? "Text",
           textAlign: TextAlign.center,
           style: error
               ? TextStyle(
-                  color:
-                      Theme.of(context).snackBarTheme.disabledActionTextColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400)
-              : textStyle),
-      behavior: SnackBarBehavior.floating,
-      width: double.infinity,
-      padding: padding ?? const EdgeInsets.fromLTRB(16, 12, 16, 12),
-      backgroundColor: error ? const Color(0xFFFFF1F0) : backgroundColor,
-    ));
+              color: Theme.of(context)
+                  .snackBarTheme
+                  .disabledActionTextColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w400)
+              : textStyle,
+        ),
+        behavior: SnackBarBehavior.floating,
+        padding: padding,
+        backgroundColor: error ? Color(0xFFFFF1F0) :backgroundColor??Theme.of(context).snackBarTheme.backgroundColor,
+      ),
+    );
   }
 }
