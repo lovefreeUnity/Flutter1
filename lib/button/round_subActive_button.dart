@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:study/MORTcolor.dart';
 
 class RoundSubActivityButton extends StatefulWidget {
   const RoundSubActivityButton(
@@ -20,7 +19,7 @@ class RoundSubActivityButton extends StatefulWidget {
   final bool? disable;
   final TextStyle? textStyle;
   final EdgeInsets? padding;
-  final VoidCallback? onClick;
+  final GestureTapCallback? onClick;
   final Color? borderColor;
   final Color? buttonColor;
 }
