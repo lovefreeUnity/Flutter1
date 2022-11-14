@@ -28,6 +28,7 @@ class _DefaultState extends State<Default> {
           child: RoundButton(
             onClick: () {
               widget.leftClick();
+              Navigator.pop(context);
             },
             text: widget.leftButton??"Button",
             buttonColor: Colors.white,
@@ -42,6 +43,7 @@ class _DefaultState extends State<Default> {
           child: RoundButton(
             onClick: () {
               widget.rightClick();
+              Navigator.pop(context);
             },
             text: widget.rightButton ?? "Button",
             textStyle: TextStyle(
@@ -70,6 +72,7 @@ class _Horizontal_1State extends State<Horizontal_1> {
     return RoundButton(
       onClick: (){
         widget.buttonClick;
+        Navigator.pop(context);
       },
       text: widget.button??"Button",
       textStyle: TextStyle(
@@ -100,6 +103,7 @@ class _Horizontal_2State extends State<Horizontal_2> {
         RoundButton(
           onClick: (){
             widget.topClick;
+            Navigator.pop(context);
           },
           text: widget.topButton??"Button",
           textStyle: TextStyle(
@@ -110,6 +114,7 @@ class _Horizontal_2State extends State<Horizontal_2> {
         RoundButton(
           onClick: (){
             widget.bottomClick;
+            Navigator.pop(context);
           },
           buttonColor: Colors.white,
           text: widget.bottomButton??"Button",
