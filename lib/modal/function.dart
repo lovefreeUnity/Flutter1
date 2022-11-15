@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:study/modal/custom_popup.dart';
 
-mixin ShowPopup {
-  static void customPopup(
+class CustomFunction {
+  customPopup(
       {required BuildContext context,
       required Widget title,
       required Widget content,
@@ -17,7 +17,7 @@ mixin ShowPopup {
     );
   }
 
-  static void defaultPopup(
+  defaultPopup(
       {required BuildContext context,
       required String title,
       required String content,
@@ -50,7 +50,7 @@ mixin ShowPopup {
     );
   }
 
-  static void horizontal2Popup(
+  horizontal2Popup(
       {required BuildContext context,
       required String title,
       required String content,
@@ -84,7 +84,7 @@ mixin ShowPopup {
     );
   }
 
-  static void horizontal1Popup(
+  horizontal1Popup(
       {required BuildContext context,
       required String title,
       required String content,
@@ -108,34 +108,36 @@ mixin ShowPopup {
       ),
     );
   }
-}
 
-class Toast {
-  static void showToast(
+  showToast(
       {required BuildContext context,
-      String? text,
-      TextStyle? textStyle,
-      EdgeInsets? padding,
-      bool error = false,
-      Color? backgroundColor}) {
+        String? text,
+        TextStyle? textStyle,
+        EdgeInsets? margin,
+        bool error = false,
+        Color? backgroundColor}) {
     ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
+    return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(text ?? "Text",
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: error
+            ? Color(0xFFFFF1F0)
+            : backgroundColor ??
+            Theme.of(context).snackBarTheme.backgroundColor,
+        margin: margin ?? EdgeInsets.all(40), //스낵바의 content와 스낵바 본인과의 거리를 늘린다.
+        content: Text(
+          text ?? "Text",
           textAlign: TextAlign.center,
           style: error
               ? TextStyle(
-              color: Theme.of(context)
-                  .snackBarTheme
-                  .disabledActionTextColor,
+              color:
+              Theme.of(context).snackBarTheme.disabledActionTextColor,
               fontSize: 16,
               fontWeight: FontWeight.w400)
               : textStyle,
         ),
-        behavior: SnackBarBehavior.floating,
-        padding: padding,
-        backgroundColor: error ? Color(0xFFFFF1F0) :backgroundColor??Theme.of(context).snackBarTheme.backgroundColor,
       ),
     );
   }
 }
+final customFunction = CustomFunction();
